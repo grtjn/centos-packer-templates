@@ -37,6 +37,7 @@ In the end I didn't need to rebuild them at all. Instead I was able to take them
 - vagrant init chef/centos-6.5
 - vagrant up --provider virtualbox
 - vagrant package --output 1.0.0/virtualbox/packer-centos-6.5-x86_64-disk1.box
+- vagrant destroy
 
 Once you have .box files, you can upload these to atlas.hashicorp.com with following steps:
 
@@ -56,11 +57,13 @@ Once you have .box files, you can upload these to atlas.hashicorp.com with follo
 
 ## Available baseboxes
 
-I republished the 4 Chef baseboxes I was using myself (only virtualbox unfortunately) on hashicorp.com for posterity, and might include the newer bento boxes there as well:
+I republished the 4 Chef baseboxes I was using myself (only virtualbox unfortunately) on hashicorp.com for posterity, and have include newer bento boxes there as well:
 
 https://atlas.hashicorp.com/grtjn:
 
-- grtjn/centos-6.5
-- grtjn/centos-6.6
-- grtjn/centos-7.0
-- grtjn/centos-7.1
+- grtjn/centos-5.11 (bento 2.2.0)
+- grtjn/centos-6.5 (chef 1.0.0)
+- grtjn/centos-6.6 (chef 1.0.0)
+- grtjn/centos-6.7 (bento 2.2.0)
+- grtjn/centos-7.0 (chef 1.0.0)
+- grtjn/centos-7.1 (chef 1.0.0/bento 2.2.0)
