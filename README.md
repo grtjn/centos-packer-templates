@@ -6,7 +6,7 @@ Full credits for the templates, and base boxes go to https://github.com/chef/ben
 
 ## Background
 
-Vagrant is a very convenient way of creating and managing VMs. I was depending on chef/centos base boxes for my mlvagrant project. In August 2015 they were taken down, because the Chef organisation decided to stop publishing older versions, and moved from chef/ to bento/. The bento boxes include only latest release of each major version of the OS types they support (quite a lot of them). This was inconvenient for my mlvagrant project, and for anyone else that was depending on those base boxes. Next to this, I think it makes sense to preserve the older versions, to be able to run tests against old kernels as well.
+Vagrant is a very convenient way of creating and managing VMs. I was depending on chef/centos base boxes for my mlvagrant project (related to my work for MarkLogic). In August 2015 they were taken down, because the Chef organisation decided to stop publishing older versions, and moved from chef/ to bento/. The bento boxes include only latest release of each major version of the OS types they support (quite a lot of them). This was inconvenient for my mlvagrant project, and for anyone else that was depending on those base boxes. Next to this, I think it makes sense to preserve the older versions, to be able to run tests against old kernels as well.
 
 Luckely all the good work for Bento is on github (https://github.com/chef/bento), and you can rebuild the VM images from the packer templates published in that project. I took the liberty to copy them (focussing on centos 64-bit), and also searched git history to pull up a number of the 'obsolete' versions of the CentOS templates.
 
