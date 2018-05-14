@@ -66,6 +66,8 @@ https://atlas.hashicorp.com/grtjn:
 - grtjn/centos-6.6 (chef 1.0.0)
 - grtjn/centos-6.7 (bento 2.2.0)
 - grtjn/centos-6.8 (bento 2.3.0)
+- grtjn/centos-6.9 (bento 2.3.5)
 - grtjn/centos-7.0 (chef 1.0.0)
 - grtjn/centos-7.1 (chef 1.0.0/bento 2.2.0)
 - grtjn/centos-7.2 (bento 2.3.0)
+- grtjn/centos-7.3 (bento 2.3.5)
