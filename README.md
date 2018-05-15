@@ -34,14 +34,28 @@ This will take a while. It will help using a mirror that is near to you:
 
 In the end I didn't need to rebuild them at all. Instead I was able to take them from my local Vagrant cache. That is actually pretty simple. It comes down to taking these few steps for each basebox:
 
-- vagrant init chef/centos-6.5
+- vagrant init bento/centos-6.5
+- add these lines to the Vagrantfile:
+
+        if Vagrant.has_plugin?("vagrant-vbguest")
+            config.vbguest.no_install = true
+        end
+        
+        config.vm.provider :virtualbox do |vb|
+            vb.customize ["modifyvm", :id, "--nictype1", "virtio"]
+            vb.customize ["modifyvm", :id, "--nictype2", "virtio"]
+            # to make sure ssh won't timeout because of a regression in VBox
+            vb.customize ["modifyvm", :id, "--cableconnected1", "on"]
+            vb.customize ["modifyvm", :id, "--cableconnected2", "on"]
+        end
+
 - vagrant up --provider virtualbox
 - vagrant package --output 1.0.0/virtualbox/packer-centos-6.5-x86_64-disk1.box
 - vagrant destroy
 
-Once you have .box files, you can upload these to atlas.hashicorp.com with following steps:
+Once you have .box files, you can upload these to vagrantup cloud (previously atlas.hashicorp.com) with following steps:
 
-- Login or Sign up at https://atlas.hashicorp.com/account/new
+- Login or Sign up at https://app.vagrantup.com/account/new (previously https://atlas.hashicorp.com/account/new)
 - Click "Create a Vagrant Box with the Web UI"
 - Pick a name for the box, check the private flag, and create new box
 - Create new version
@@ -59,7 +73,7 @@ Once you have .box files, you can upload these to atlas.hashicorp.com with follo
 
 I republished the 4 Chef baseboxes I was using myself (only virtualbox unfortunately) on hashicorp.com for posterity, and have include newer bento boxes there as well:
 
-https://atlas.hashicorp.com/grtjn:
+https://app.vagrantup.com/grtjn (previously https://atlas.hashicorp.com/grtjn):
 
 - grtjn/centos-5.11 (bento 2.2.0)
 - grtjn/centos-6.5 (chef 1.0.0)
@@ -70,4 +84,5 @@ https://atlas.hashicorp.com/grtjn:
 - grtjn/centos-7.0 (chef 1.0.0)
 - grtjn/centos-7.1 (chef 1.0.0/bento 2.2.0)
 - grtjn/centos-7.2 (bento 2.3.0)
-- grtjn/centos-7.3 (bento 2.3.5)
+- grtjn/centos-7.3 (bento 201708.22.0)
+- grtjn/centos-7.4 (bento 201803.24.0)

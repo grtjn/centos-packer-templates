@@ -2,7 +2,7 @@
   "builders": [
     {
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
+        "<up><wait><tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
@@ -40,7 +40,7 @@
     },
     {
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
+        "<up><wait><tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
@@ -68,7 +68,7 @@
     },
     {
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
+        "<up><wait><tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
@@ -110,7 +110,7 @@
       "cpu": "{{ user `cpus` }}",
       "disk_size": "{{user `disk_size`}}",
       "floppy_files": [
-        "../centos/http/{{user `ks_path`}}"
+        "http/7/ks.cfg"
       ],
       "generation": "{{user `hyperv_generation`}}",
       "guest_additions_mode": "disable",
@@ -131,7 +131,7 @@
     },
     {
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
+        "<up><wait><tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
@@ -166,6 +166,7 @@
       ],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "scripts": [
+
         "scripts/update.sh",
         "../_common/sshd.sh",
         "scripts/networking.sh",
@@ -180,7 +181,7 @@
     }
   ],
   "variables": {
-    "box_basename": "centos-6.9",
+    "box_basename": "centos-7.4",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "1",
     "disk_size": "40960",
@@ -189,16 +190,17 @@
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
     "hyperv_generation": "1",
-    "iso_checksum": "d27cf37a40509c17ad70f37bc743f038c1feba00476fe6b69682aa424c399ea6",
+    "hyperv_switch": "{{env `hyperv_switch`}}",
+    "iso_checksum": "ec7500d4b006702af6af023b1f8f1b890b6c7ee54400bb98cef968b883cd6546",
     "iso_checksum_type": "sha256",
-    "iso_name": "CentOS-6.9-x86_64-bin-DVD1.iso",
-    "ks_path": "6/ks.cfg",
+    "iso_name": "CentOS-7-x86_64-DVD-1708.iso",
+    "ks_path": "7/ks.cfg",
     "memory": "1024",
     "mirror": "http://mirrors.kernel.org/centos",
-    "mirror_directory": "6.9/isos/x86_64",
-    "name": "centos-6.9",
+    "mirror_directory": "7.4.1708/isos/x86_64",
+    "name": "centos-7.4",
     "no_proxy": "{{env `no_proxy`}}",
-    "template": "centos-6.9-x86_64",
+    "template": "centos-7.4-x86_64",
     "version": "TIMESTAMP"
   }
 }
